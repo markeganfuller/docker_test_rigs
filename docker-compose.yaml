@@ -1,0 +1,32 @@
+---
+version: '3'
+
+services:
+  archlinux:
+    image: archlinux
+    hostname: archlinux
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  archlinux-puppet-lint:
+    build: ./conf/archlinux/puppet-lint
+    hostname: archlinux
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+
+  ubuntu2004:
+    image: ubuntu:20.04
+    hostname: ubuntu2004
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  ubuntu2204-puppet-lint:
+    build: ./conf/ubuntu/2004/puppet-lint
+    hostname: puppet-lint
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
