@@ -24,7 +24,7 @@ services:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
 
-  ubuntu2204-puppet-lint:
+  ubuntu2004-puppet-lint:
     build: ./conf/ubuntu/2004/puppet-lint
     hostname: puppet-lint
     volumes:
