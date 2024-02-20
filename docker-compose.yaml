@@ -16,6 +16,12 @@ services:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
 
+  ubuntu1204:
+    build: ./conf/ubuntu/1204
+    hostname: ubuntu1204
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
 
   ubuntu2004:
     image: ubuntu:20.04
@@ -27,6 +33,13 @@ services:
   ubuntu2004-puppet-lint:
     build: ./conf/ubuntu/2004/puppet-lint
     hostname: puppet-lint
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  ubuntu2004-elastic-agent:
+    build: ./conf/ubuntu/2004/elastic-agent
+    hostname: elastic-agent
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
