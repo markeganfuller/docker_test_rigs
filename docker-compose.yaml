@@ -1,6 +1,4 @@
 ---
-version: '3'
-
 services:
   archlinux:
     image: archlinux
@@ -40,6 +38,13 @@ services:
   ubuntu2004-elastic-agent:
     build: ./conf/ubuntu/2004/elastic-agent
     hostname: elastic-agent
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  ubuntu2204:
+    image: ubuntu:22.04
+    hostname: ubuntu2204
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
