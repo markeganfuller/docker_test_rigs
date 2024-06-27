@@ -9,7 +9,7 @@ services:
 
   archlinux-puppet-lint:
     build: ./conf/archlinux/puppet-lint
-    hostname: puppet-lint
+    hostname: archlinux-puppet-lint
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
@@ -39,14 +39,14 @@ services:
 
   ubuntu2004-puppet-lint:
     build: ./conf/ubuntu/2004/puppet-lint
-    hostname: puppet-lint
+    hostname: ubuntu2004-puppet-lint
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
 
   ubuntu2004-elastic-agent:
     build: ./conf/ubuntu/2004/elastic-agent
-    hostname: elastic-agent
+    hostname: ubuntu2004-elastic-agent
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
