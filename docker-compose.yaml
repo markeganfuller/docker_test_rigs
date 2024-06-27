@@ -57,3 +57,30 @@ services:
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
+
+  ubuntu2204-apache:
+    build: ./conf/ubuntu/2204/apache
+    hostname: ubuntu2204-apache
+
+  ubuntu2204-owasp:
+    build: ./conf/ubuntu/2204/owasp
+    hostname: ubuntu2204-owasp
+
+  ubuntu2404:
+    image: ubuntu:24.04
+    hostname: ubuntu2404
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  # Connect via browser (port 8006) or RDP to the containers IP for a GUI
+  windows11:
+    image: dockurr/windows
+    environment:
+      VERSION: "win11"
+    devices:
+      - /dev/kvm
+    cap_add:
+      - NET_ADMIN
+    stop_grace_period: 2m
+    restart: on-failure
