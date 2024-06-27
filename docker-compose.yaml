@@ -9,9 +9,18 @@ services:
 
   archlinux-puppet-lint:
     build: ./conf/archlinux/puppet-lint
-    hostname: archlinux
+    hostname: puppet-lint
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  archlinux-vim:
+    build: ./conf/archlinux/vim
+    hostname: archlinux-vim
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ~/.vimrc:/root/.vimrc
+      - ~/.vim:/root/.vim
     entrypoint: /entrypoint.sh
 
   ubuntu1204:
