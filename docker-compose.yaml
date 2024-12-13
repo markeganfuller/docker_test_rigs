@@ -23,6 +23,34 @@ services:
       - ~/.vim:/root/.vim
     entrypoint: /entrypoint.sh
 
+  centos7:
+    build: ./conf/centos/7
+    hostname: centos7
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  centos7-puppet_rpm_gpgkey_issue:
+    build: ./conf/centos/7/puppet_rpm_gpgkey_issue
+    hostname: centos7-puppet_rpm_gpgkey_issue
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  rockylinux9:
+    image: rockylinux9
+    hostname: rockylinux9
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
+  rockylinux9-puppet_rpm_gpgkey_issue:
+    build: ./conf/rockylinux/9/puppet_rpm_gpgkey_issue
+    hostname: rockylinux9-puppet_rpm_gpgkey_issue
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
   ubuntu1204:
     build: ./conf/ubuntu/1204
     hostname: ubuntu1204
@@ -65,6 +93,13 @@ services:
   ubuntu2204-owasp:
     build: ./conf/ubuntu/2204/owasp
     hostname: ubuntu2204-owasp
+
+  ubuntu2204-puppet_rpm_gpgkey_issue:
+    build: ./conf/ubuntu/2204/puppet_rpm_gpgkey_issue
+    hostname: ubuntu2204-puppet_rpm_gpgkey_issue
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
 
   ubuntu2404:
     image: ubuntu:24.04
