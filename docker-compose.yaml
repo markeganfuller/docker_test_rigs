@@ -5,6 +5,7 @@ services:
     hostname: archlinux
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   archlinux-puppet-lint:
@@ -12,6 +13,7 @@ services:
     hostname: archlinux-puppet-lint
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   archlinux-vim:
@@ -19,6 +21,7 @@ services:
     hostname: archlinux-vim
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
       - ~/.vimrc:/root/.vimrc
       - ~/.vim:/root/.vim
     entrypoint: /entrypoint.sh
@@ -28,6 +31,7 @@ services:
     hostname: centos7
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   centos7-puppet_rpm_gpgkey_issue:
@@ -35,6 +39,7 @@ services:
     hostname: centos7-puppet_rpm_gpgkey_issue
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   rockylinux9:
@@ -42,6 +47,7 @@ services:
     hostname: rockylinux9
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   rockylinux9-puppet_rpm_gpgkey_issue:
@@ -49,6 +55,7 @@ services:
     hostname: rockylinux9-puppet_rpm_gpgkey_issue
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   ubuntu1204:
@@ -56,6 +63,7 @@ services:
     hostname: ubuntu1204
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   ubuntu2004:
@@ -63,6 +71,7 @@ services:
     hostname: ubuntu2004
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   ubuntu2004-puppet-lint:
@@ -70,6 +79,7 @@ services:
     hostname: ubuntu2004-puppet-lint
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   ubuntu2004-elastic-agent:
@@ -77,6 +87,7 @@ services:
     hostname: ubuntu2004-elastic-agent
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   ubuntu2204:
@@ -84,21 +95,28 @@ services:
     hostname: ubuntu2204
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   ubuntu2204-apache:
     build: ./conf/ubuntu/2204/apache
     hostname: ubuntu2204-apache
+    volumes:
+      - ./tmp:/mnt/tmp
 
   ubuntu2204-owasp:
     build: ./conf/ubuntu/2204/owasp
     hostname: ubuntu2204-owasp
+    volumes:
+      - ./tmp:/mnt/tmp
+
 
   ubuntu2204-puppet_rpm_gpgkey_issue:
     build: ./conf/ubuntu/2204/puppet_rpm_gpgkey_issue
     hostname: ubuntu2204-puppet_rpm_gpgkey_issue
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   ubuntu2404:
@@ -106,6 +124,7 @@ services:
     hostname: ubuntu2404
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   ubuntu2404-puppet:
@@ -113,6 +132,7 @@ services:
     hostname: ubuntu2404-puppet
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
   # Connect via browser (port 8006) or RDP to the containers IP for a GUI
