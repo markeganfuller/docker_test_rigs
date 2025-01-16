@@ -108,6 +108,13 @@ services:
       - ./entrypoint.sh:/entrypoint.sh
     entrypoint: /entrypoint.sh
 
+  ubuntu2404-puppet:
+    build: ./conf/ubuntu/2404/puppet
+    hostname: ubuntu2404-puppet
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: /entrypoint.sh
+
   # Connect via browser (port 8006) or RDP to the containers IP for a GUI
   windows11:
     image: dockurr/windows
