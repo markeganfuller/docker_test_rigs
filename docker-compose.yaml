@@ -1,4 +1,15 @@
 ---
+networks:
+  docker_test_rigs:
+    enable_ipv6: true
+    driver: bridge
+    name: docker_test_rigs
+    ipam:
+      driver: default
+      config:
+        - subnet: fc00:cafe:cafe::/64
+          gateway: fc00:cafe:cafe::1
+
 services:
   archlinux:
     image: archlinux
@@ -90,6 +101,17 @@ services:
       - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
+  # Note v6 doesn't seem to work for iptables
+  ubuntu2004-puppet-iptables:
+    build: ./conf/ubuntu/2004/puppet-iptables
+    hostname: ubuntu2004-puppet-iptables
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+    cap_add:
+      - NET_ADMIN
+
   ubuntu2204:
     image: ubuntu:22.04
     hostname: ubuntu2204
@@ -135,15 +157,32 @@ services:
       - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
-  ubuntu2404-puppet-iptables:
-    build: ./conf/ubuntu/2404/puppet-iptables
-    hostname: ubuntu2404-puppet-iptables
+  ubuntu2404-puppet7-iptables:
+    build: ./conf/ubuntu/2404/puppet7-iptables
+    hostname: ubuntu2404-puppet7-iptables
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
       - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
     cap_add:
       - NET_ADMIN
+    networks:
+      docker_test_rigs:
+        ipv6_address: fc00:cafe:cafe::7
+
+
+  ubuntu2404-puppet8-iptables:
+    build: ./conf/ubuntu/2404/puppet8-iptables
+    hostname: ubuntu2404-puppet8-iptables
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+    cap_add:
+      - NET_ADMIN
+    networks:
+      docker_test_rigs:
+        ipv6_address: fc00:cafe:cafe::8
 
   # Connect via browser (port 8006) or RDP to the containers IP for a GUI
   windows11:
