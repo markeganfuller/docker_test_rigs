@@ -45,6 +45,14 @@ services:
       - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
+  centos7-puppet:
+    build: ./conf/centos/7/puppet
+    hostname: centos7-puppet
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
   centos7-puppet_rpm_gpgkey_issue:
     build: ./conf/centos/7/puppet_rpm_gpgkey_issue
     hostname: centos7-puppet_rpm_gpgkey_issue
@@ -80,6 +88,14 @@ services:
   ubuntu2004:
     image: ubuntu:20.04
     hostname: ubuntu2004
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2004-puppet:
+    build: ./conf/ubuntu/2004/puppet
+    hostname: ubuntu2004-puppet
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
       - ./tmp:/mnt/tmp
@@ -170,7 +186,6 @@ services:
       docker_test_rigs:
         ipv6_address: fc00:cafe:cafe::7
 
-
   ubuntu2404-puppet8-iptables:
     build: ./conf/ubuntu/2404/puppet8-iptables
     hostname: ubuntu2404-puppet8-iptables
@@ -183,6 +198,19 @@ services:
     networks:
       docker_test_rigs:
         ipv6_address: fc00:cafe:cafe::8
+
+  ubuntu2404-nftables:
+    build: ./conf/ubuntu/2404/nftables
+    hostname: ubuntu2404-nftables
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+    cap_add:
+      - NET_ADMIN
+    networks:
+      docker_test_rigs:
+        ipv6_address: fc00:cafe:cafe::9
 
   # Connect via browser (port 8006) or RDP to the containers IP for a GUI
   windows11:
