@@ -165,9 +165,17 @@ services:
       - ./tmp:/mnt/tmp
     entrypoint: /entrypoint.sh
 
-  ubuntu2404-puppet:
-    build: ./conf/ubuntu/2404/puppet
-    hostname: ubuntu2404-puppet
+  ubuntu2404-puppet7:
+    build: ./conf/ubuntu/2404/puppet7
+    hostname: ubuntu2404-puppet7
+    volumes:
+      - ./entrypoint.sh:/entrypoint.sh
+      - ./tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2404-puppet8:
+    build: ./conf/ubuntu/2404/puppet8
+    hostname: ubuntu2404-puppet8
     volumes:
       - ./entrypoint.sh:/entrypoint.sh
       - ./tmp:/mnt/tmp
