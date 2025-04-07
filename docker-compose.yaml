@@ -9,6 +9,8 @@ networks:
       config:
         - subnet: fc00:cafe:cafe::/64
           gateway: fc00:cafe:cafe::1
+        - subnet: 172.19.9.0/24
+          gateway: 172.19.9.1
 
 services:
   archlinux:
