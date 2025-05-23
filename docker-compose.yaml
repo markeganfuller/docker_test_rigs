@@ -239,3 +239,9 @@ services:
     hostname: tomcat9.0.104-jre17
     ports:
       - 8888:8080
+
+  tomcat10.1.41-jre17:
+    build: ./conf/tomcat/10.1.41-jre17
+    hostname: tomcat10.1.41-jre17
+    ports:
+      - 8888:8080
