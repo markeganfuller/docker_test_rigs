@@ -237,11 +237,11 @@ services:
   tomcat9.0.104-jre17:
     build: ./conf/tomcat/9.0.104-jre17
     hostname: tomcat9.0.104-jre17
-    ports:
-      - 8888:8080
+    post_start:
+      - command: bash -c 'echo -e "\nTomcat http://$(hostname -i):8080/manager/html admin/admin\n"'
 
   tomcat10.1.41-jre17:
     build: ./conf/tomcat/10.1.41-jre17
     hostname: tomcat10.1.41-jre17
-    ports:
-      - 8888:8080
+    post_start:
+      - command: bash -c 'echo -e "\nTomcat http://$(hostname -i):8080/manager/html admin/admin\n"'
