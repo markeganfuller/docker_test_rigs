@@ -222,6 +222,13 @@ services:
       docker_test_rigs:
         ipv6_address: fc00:cafe:cafe::9
 
+  ubuntu2404-systemd:
+    build: ./conf/ubuntu/2404/systemd
+    hostname: ubuntu2404-systemd
+    volumes:
+      - ./tmp:/mnt/tmp
+    privileged: true
+
   # Connect via browser (port 8006) or RDP to the containers IP for a GUI
   windows11:
     image: dockurr/windows
