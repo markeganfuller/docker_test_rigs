@@ -1,8 +1,7 @@
-FROM ubuntu:20.04
+FROM dtr_ubuntu:2004
 
 ENV BUNDLE_SILENCE_ROOT_WARNING=1
 
-RUN apt-get update
 RUN apt-get install ruby ruby-bundler -y
 
 COPY Gemfile /Gemfile

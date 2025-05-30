@@ -1,7 +1,4 @@
-FROM ubuntu:22.04
-
-RUN apt-get update
-RUN apt-get install -y wget
+FROM dtr_ubuntu:2204
 
 # Install Puppet
 RUN wget https://apt.puppet.com/puppet7-release-jammy.deb

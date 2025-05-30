@@ -1,9 +1,7 @@
-FROM archlinux
+FROM dtr_archlinux
 
 ENV BUNDLE_SILENCE_ROOT_WARNING=1
 
-RUN pacman-key --init
-RUN pacman -Syu --noconfirm
 RUN pacman -S --noconfirm ruby
 # RUN pacman -S --noconfirm ruby-bundler
 

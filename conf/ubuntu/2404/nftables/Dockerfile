@@ -1,6 +1,4 @@
-FROM ubuntu:24.04
-
-RUN apt-get update
+FROM dtr_ubuntu:2404
 
 RUN apt-get install -y nftables
 

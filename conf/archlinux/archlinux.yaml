@@ -1,0 +1,29 @@
+---
+services:
+  archlinux:
+    build:
+      context: .
+    image: dtr_archlinux
+    hostname: archlinux
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  archlinux-puppet-lint:
+    build: ./puppet-lint
+    hostname: archlinux-puppet-lint
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  archlinux-vim:
+    build: ./vim
+    hostname: archlinux-vim
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+      - ~/.vimrc:/root/.vimrc
+      - ~/.vim:/root/.vim
+    entrypoint: /entrypoint.sh

@@ -1,0 +1,166 @@
+---
+services:
+  ubuntu1204:
+    build:
+      context: ./1204
+      additional_contexts:
+        ubuntu: ./
+    hostname: ubuntu1204
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2004:
+    build:
+      context: ./2004
+      additional_contexts:
+        ubuntu: ./
+    image: dtr_ubuntu:2004
+    hostname: ubuntu2004
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2004-puppet:
+    build: 2004/puppet
+    hostname: ubuntu2004-puppet
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2004-puppet-lint:
+    build: 2004/puppet-lint
+    hostname: ubuntu2004-puppet-lint
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2004-elastic-agent:
+    build: 2004/elastic-agent
+    hostname: ubuntu2004-elastic-agent
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  # Note v6 doesn't seem to work for iptables
+  ubuntu2004-puppet-iptables:
+    build: 2004/puppet-iptables
+    hostname: ubuntu2004-puppet-iptables
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+    cap_add:
+      - NET_ADMIN
+
+  ubuntu2204:
+    build:
+      context: ./2204
+      additional_contexts:
+        ubuntu: ./
+    image: dtr_ubuntu:2204
+    hostname: ubuntu2204
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2204-apache:
+    build: 2204/apache
+    hostname: ubuntu2204-apache
+    volumes:
+      - ../../tmp:/mnt/tmp
+
+  ubuntu2204-owasp:
+    build: 2204/owasp
+    hostname: ubuntu2204-owasp
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+
+  ubuntu2204-puppet_rpm_gpgkey_issue:
+    build: 2204/puppet_rpm_gpgkey_issue
+    hostname: ubuntu2204-puppet_rpm_gpgkey_issue
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2404:
+    build:
+      context: ./2404
+      additional_contexts:
+        ubuntu: ./
+    image: dtr_ubuntu:2404
+    hostname: ubuntu2404
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2404-puppet7:
+    build: 2404/puppet7
+    hostname: ubuntu2404-puppet7
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2404-puppet8:
+    build: 2404/puppet8
+    hostname: ubuntu2404-puppet8
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+
+  ubuntu2404-puppet7-iptables:
+    build: 2404/puppet7-iptables
+    hostname: ubuntu2404-puppet7-iptables
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+    cap_add:
+      - NET_ADMIN
+    networks:
+      docker_test_rigs:
+        ipv6_address: fc00:cafe:cafe::7
+
+  ubuntu2404-puppet8-iptables:
+    build: 2404/puppet8-iptables
+    hostname: ubuntu2404-puppet8-iptables
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+    cap_add:
+      - NET_ADMIN
+    networks:
+      docker_test_rigs:
+        ipv6_address: fc00:cafe:cafe::8
+
+  ubuntu2404-nftables:
+    build: 2404/nftables
+    hostname: ubuntu2404-nftables
+    volumes:
+      - ../../entrypoint.sh:/entrypoint.sh
+      - ../../tmp:/mnt/tmp
+    entrypoint: /entrypoint.sh
+    cap_add:
+      - NET_ADMIN
+    networks:
+      docker_test_rigs:
+        ipv6_address: fc00:cafe:cafe::9
+
+  ubuntu2404-systemd:
+    build: 2404/systemd
+    hostname: ubuntu2404-systemd
+    volumes:
+      - ../../tmp:/mnt/tmp
+    privileged: true

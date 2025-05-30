@@ -1,7 +1,5 @@
-FROM archlinux
+FROM dtr_archlinux
 
-RUN pacman-key --init
-RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm vim git
+RUN pacman -S --noconfirm git
 
 ENTRYPOINT ["vim"]

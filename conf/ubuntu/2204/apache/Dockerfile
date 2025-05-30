@@ -1,6 +1,5 @@
-FROM ubuntu:22.04
+FROM dtr_ubuntu:2204
 
-RUN apt-get update
-RUN apt-get install -y apache2 vim
+RUN apt-get install -y apache2
 
 ENTRYPOINT ["/usr/sbin/apachectl", "-DFOREGROUND"]
